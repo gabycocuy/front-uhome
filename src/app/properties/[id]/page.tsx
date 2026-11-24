@@ -39,11 +39,11 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
   const vibeItems = vibe
     ? [
-        { label: "Ambiente estudiantil", value: vibe.studentDensity },
-        { label: "Vida nocturna", value: vibe.nightlife },
-        { label: "Lugares para estudiar", value: vibe.studySpots },
-        { label: "Tranquilidad", value: vibe.quietness },
-        { label: "Servicios esenciales", value: vibe.essentialSpots },
+        { label: "Student community", value: vibe.studentDensity },
+        { label: "Nightlife", value: vibe.nightlife },
+        { label: "Study spots", value: vibe.studySpots },
+        { label: "Quietness", value: vibe.quietness },
+        { label: "Essential services", value: vibe.essentialSpots },
       ]
     : [];
 
@@ -54,16 +54,16 @@ export default async function PropertyDetailPage({ params }: PageProps) {
           href="/properties"
           className="font-semibold text-red-600 hover:underline"
         >
-          ← Volver a propiedades
+          ← Back to properties
         </Link>
 
         <header className="mb-8 mt-6">
           <div className="mb-3 flex flex-wrap gap-2">
             <span className="rounded-full bg-red-50 px-3 py-1 text-sm text-red-700">
-              {property.propertyType?.name ?? "Vivienda"}
+              {property.propertyType?.name ?? "Housing"}
             </span>
             <span className="rounded-full bg-gray-100 px-3 py-1 text-sm">
-              {property.available ? "Disponible" : "No disponible"}
+              {property.available ? "Available" : "Unavailable"}
             </span>
           </div>
 
@@ -72,17 +72,17 @@ export default async function PropertyDetailPage({ params }: PageProps) {
           <p className="mt-4 text-2xl font-bold text-red-600">
             {formatPrice(property.price)}
             <span className="ml-2 text-sm font-normal text-gray-500">
-              / mes
+              / month
             </span>
           </p>
         </header>
 
         <section className="mb-6 rounded-2xl border bg-white p-6">
-          <h2 className="mb-3 text-xl font-bold">Sobre esta vivienda</h2>
+          <h2 className="mb-3 text-xl font-bold">About this place</h2>
           <p className="leading-7 text-gray-600">{property.description}</p>
           <p className="mt-4 text-sm text-gray-600">
-            Distancia al campus:{" "}
-            {(property.distanceToCampus / 1000).toLocaleString("es-CO", {
+            Distance to campus:{" "}
+            {(property.distanceToCampus / 1000).toLocaleString("en-US", {
               maximumFractionDigits: 2,
             })}{" "}
             km
@@ -90,7 +90,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
         </section>
 
         <section className="mb-6 rounded-2xl border bg-white p-6">
-          <h2 className="mb-4 text-xl font-bold">Características</h2>
+          <h2 className="mb-4 text-xl font-bold">Features</h2>
           {property.characteristics?.length ? (
             <ul className="grid gap-2 sm:grid-cols-2">
               {property.characteristics.map((item, index) => (
@@ -103,12 +103,10 @@ export default async function PropertyDetailPage({ params }: PageProps) {
               ))}
             </ul>
           ) : (
-            <p className="text-gray-500">
-              No hay características adicionales registradas.
-            </p>
+            <p className="text-gray-500">No additional features listed.</p>
           )}
 
-          <h3 className="mb-3 mt-6 font-semibold">Servicios y amenidades</h3>
+          <h3 className="mb-3 mt-6 font-semibold">Services &amp; amenities</h3>
           <div className="flex flex-wrap gap-2">
             {property.amenities.map((amenity) => (
               <span
@@ -119,23 +117,23 @@ export default async function PropertyDetailPage({ params }: PageProps) {
               </span>
             ))}
             {!property.amenities.length && (
-              <p className="text-gray-500">No hay amenidades registradas.</p>
+              <p className="text-gray-500">No amenities listed.</p>
             )}
           </div>
         </section>
 
         <section className="mb-6 rounded-2xl border bg-white p-6">
-          <h2 className="mb-3 text-xl font-bold">Condiciones del contrato</h2>
+          <h2 className="mb-3 text-xl font-bold">Contract conditions</h2>
           <p className="whitespace-pre-line leading-7 text-gray-600">
             {property.contractConditions ||
-              "Consulta las condiciones del contrato con el arrendador."}
+              "Ask the landlord about the contract conditions."}
           </p>
         </section>
 
         <section className="mb-6 rounded-2xl border bg-white p-6">
-          <h2 className="mb-2 text-xl font-bold">Vibe Analyzer</h2>
+          <h2 className="mb-2 text-xl font-bold">Student Vibe Analyzer</h2>
           <p className="mb-6 text-sm text-gray-500">
-            Indicadores del entorno convertidos a porcentaje sobre 100%.
+            Neighborhood indicators shown as a percentage out of 100%.
           </p>
           {vibeItems.length ? (
             <div className="space-y-5">
@@ -150,13 +148,13 @@ export default async function PropertyDetailPage({ params }: PageProps) {
           ) : (
             <Alert
               type="info"
-              message="No hay un análisis de ambiente registrado para esta vivienda."
+              message="No vibe analysis is available for this property yet."
             />
           )}
         </section>
 
         <section className="mb-6 rounded-2xl border bg-white p-6">
-          <h2 className="mb-4 text-xl font-bold">Ubicación</h2>
+          <h2 className="mb-4 text-xl font-bold">Location</h2>
           <PropertyMapLoader
             latitude={property.latitude}
             longitude={property.longitude}
