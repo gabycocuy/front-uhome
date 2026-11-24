@@ -4,10 +4,8 @@ import { StarIcon } from "./icons";
 import styles from "./RatingStars.module.css";
 
 export interface RatingStarsProps {
-  /** Calificación entre 0 y `max`. Admite decimales. */
   value: number;
   max?: number;
-  /** Número de reseñas que respaldan la calificación. */
   count?: number;
   size?: "sm" | "md";
   showValue?: boolean;
@@ -20,7 +18,7 @@ const STAR_SIZE = {
 } as const;
 
 function formatRating(value: number) {
-  return value.toLocaleString("es-CO", {
+  return value.toLocaleString("en-US", {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   });
@@ -39,13 +37,13 @@ export function RatingStars({
   const countLabel =
     count === undefined
       ? ""
-      : ` (${count} ${count === 1 ? "reseña" : "reseñas"})`;
+      : ` (${count} ${count === 1 ? "review" : "reviews"})`;
 
   return (
     <div
       className={cx(styles.rating, styles[size], className)}
       role="img"
-      aria-label={`Calificación de ${formatRating(safeValue)} sobre ${max}${countLabel}`}
+      aria-label={`Rated ${formatRating(safeValue)} out of ${max}${countLabel}`}
     >
       <span className={styles.stars} aria-hidden="true">
         {Array.from({ length: max }, (_, index) => {
