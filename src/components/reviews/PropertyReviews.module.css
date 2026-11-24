@@ -1,0 +1,102 @@
+.section {
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  color: var(--color-ink, #15181f);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.formCard {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #fbf6f4;
+  border: 1px solid #ecdcd9;
+  border-radius: 16px;
+}
+
+.formTitle {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-wine, #a1325c);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.itemHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.author {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.comment {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.itemFooter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.date {
+  font-size: 12px;
+  opacity: 0.55;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.empty {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.6;
+}
