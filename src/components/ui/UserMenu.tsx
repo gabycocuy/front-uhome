@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { logout } from "../../services/auth";
-import { useNotificationStore, toast } from "../../store/notificationStore";
+import { useFavoritesStore } from "../../store/favoritesStore";
+import { toast } from "../../store/notificationStore";
 import { useSessionStore } from "../../store/sessionStore";
 import { Avatar } from "./Avatar";
 import { ConfirmModal } from "./ConfirmModal";
@@ -27,6 +28,7 @@ export function UserMenu() {
     setLoading(true);
     await logout().catch(() => undefined);
     clear();
+    useFavoritesStore.getState().reset();
     setConfirmOpen(false);
     setLoading(false);
     toast.success("You've been logged out", "See you soon!");
