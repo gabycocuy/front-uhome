@@ -8,7 +8,7 @@ export async function apiRequest(
   token?: string,
 ): Promise<Response> {
   if (!API_URL) {
-    throw new Error("Falta configurar NEXT_PUBLIC_API_URL.");
+    throw new Error("NEXT_PUBLIC_API_URL is not configured.");
   }
 
   const headers = new Headers(options.headers);
@@ -58,8 +58,8 @@ export async function getErrorMessage(response: Response): Promise<string> {
       return data.message.join(", ");
     }
 
-    return "Ocurrió un error al comunicarse con el servidor.";
+    return "Something went wrong while contacting the server.";
   } catch {
-    return "No se pudo procesar la respuesta del servidor.";
+    return "The server response could not be processed.";
   }
 }

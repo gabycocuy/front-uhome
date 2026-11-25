@@ -56,7 +56,7 @@ export const useFavoritesStore = create<FavoritesState>((set, get) => ({
       if (get().loadedUserId !== userId) return;
 
       set({
-        error: errorMessage(err, "No se pudieron cargar tus favoritos."),
+        error: errorMessage(err, "Could not load your favorites."),
         status:
           err instanceof ApiError && err.status === 403
             ? "unavailable"
@@ -97,8 +97,8 @@ export const useFavoritesStore = create<FavoritesState>((set, get) => ({
             actionError: errorMessage(
               err,
               wasFavorite
-                ? "No se pudo quitar la propiedad de favoritos."
-                : "No se pudo agregar la propiedad a favoritos.",
+                ? "Could not remove the property from favorites."
+                : "Could not add the property to favorites.",
             ),
           });
           return;

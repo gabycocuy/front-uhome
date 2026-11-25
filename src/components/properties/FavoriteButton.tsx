@@ -35,10 +35,10 @@ export function FavoriteButton({
       aria-busy={pending}
       aria-label={
         active
-          ? `Quitar ${propertyName} de favoritos`
-          : `Agregar ${propertyName} a favoritos`
+          ? `Remove ${propertyName} from favorites`
+          : `Add ${propertyName} to favorites`
       }
-      title={active ? "Quitar de favoritos" : "Agregar a favoritos"}
+      title={active ? "Remove from favorites" : "Add to favorites"}
     >
       <HeartIcon size={20} filled={active} />
     </button>

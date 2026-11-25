@@ -76,7 +76,7 @@ async function request<T>(path: string): Promise<T> {
   const response = await apiRequest(path);
 
   if (!response.ok) {
-    throw new Error(`No se pudo cargar la información (${response.status}).`);
+    throw new Error(`Could not load the information (${response.status}).`);
   }
 
   return (await response.json()) as T;
