@@ -49,7 +49,7 @@ export function useAsync<T>(load: () => Promise<T>, key: string): AsyncResult<T>
             error:
               error instanceof Error && error.message
                 ? error.message
-                : "No se pudo cargar la información.",
+                : "Could not load the information.",
           },
         });
       },

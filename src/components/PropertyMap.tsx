@@ -34,7 +34,7 @@ export default function PropertyMap({
   if (latitude == null || longitude == null) {
     return (
       <div className="flex h-72 items-center justify-center rounded-2xl bg-gray-100 p-6 text-center text-gray-500">
-        Esta propiedad todavía no tiene coordenadas registradas.
+        This property has no coordinates registered yet.
       </div>
     );
   }

@@ -4,7 +4,7 @@ interface SpinnerProps {
 }
 
 export default function Spinner({
-  message = "Cargando información...",
+  message = "Loading information...",
 }: SpinnerProps) {
   return (
     <div

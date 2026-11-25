@@ -102,14 +102,14 @@ export function PropertyFilters({
   const searchId = useId();
 
   return (
-    <section className={styles.panel} aria-label="Buscar y filtrar propiedades">
+    <section className={styles.panel} aria-label="Search and filter properties">
       <form
         role="search"
         className={styles.searchRow}
         onSubmit={(event) => event.preventDefault()}
       >
         <label htmlFor={searchId} className={styles.srOnly}>
-          Buscar propiedades
+          Search properties
         </label>
         <div className={styles.searchField}>
           <SearchIcon size={20} className={styles.searchIcon} />
@@ -117,7 +117,7 @@ export function PropertyFilters({
             id={searchId}
             type="search"
             className={styles.searchInput}
-            placeholder="Busca por nombre, barrio, dirección o amenidad"
+            placeholder="Search by name, neighborhood, address or amenity"
             value={searchValue}
             onChange={(event) => onSearchChange(event.target.value)}
             autoComplete="off"

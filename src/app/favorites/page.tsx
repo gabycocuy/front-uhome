@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 export default function FavoritesPage() {
   return (
     <AppShell
-      eyebrow="Tu selección"
+      eyebrow="Your selection"
       title="Mis"
       accent="favoritos."
-      description="Las propiedades que guardaste quedan asociadas a tu cuenta para que las compares cuando quieras."
+      description="The properties you save are linked to your account so you can compare them whenever you want."
       activeHref="/favorites"
     >
       <FavoritesView />

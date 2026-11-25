@@ -74,7 +74,7 @@ export function PropertyCard({ property, rating, favorite }: PropertyCardProps) 
         {rating ? (
           <RatingStars value={rating.average} count={rating.count} size="sm" />
         ) : (
-          <p className={styles.noRating}>Sin reseñas todavía</p>
+          <p className={styles.noRating}>No reviews yet</p>
         )}
 
         <p className={styles.description}>{property.description}</p>
