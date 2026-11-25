@@ -68,12 +68,12 @@ function buildPreferenceItems(profile: StudentProfile): PreferenceItem[] {
   return [
     { label: "Universidad", value: profile.university, chip: "university" },
     {
-      label: "Presupuesto máximo",
+      label: "Maximum budget",
       value: `${formatPrice(profile.maxBudget)} al mes`,
       tone: "price",
     },
     {
-      label: "Distancia máxima al campus",
+      label: "Maximum distance to campus",
       value: formatDistance(profile.maxDistanceToCampus),
       tone: "distance",
     },
@@ -114,13 +114,13 @@ function buildPreferenceItems(profile: StudentProfile): PreferenceItem[] {
           chip: "preferences",
         },
     {
-      label: "Habitaciones mínimas",
-      value: formatCount(profile.minBedrooms, "habitación", "habitaciones"),
+      label: "Minimum bedrooms",
+      value: formatCount(profile.minBedrooms, "bedroom", "bedrooms"),
       chip: "preferences",
     },
     {
-      label: "Baños mínimos",
-      value: formatCount(profile.minBathrooms, "baño", "baños"),
+      label: "Minimum bathrooms",
+      value: formatCount(profile.minBathrooms, "bathroom", "bathrooms"),
       chip: "preferences",
     },
     {
@@ -221,7 +221,7 @@ export function ProfileView() {
   );
 
   if (query.status === "loading") {
-    return <Spinner message="Cargando tu perfil..." />;
+    return <Spinner message="Loading your profile..." />;
   }
 
   if (query.status === "error" || !query.data) {
@@ -232,7 +232,7 @@ export function ProfileView() {
         description={query.error ?? undefined}
         action={
           <Button variant="accent" size="sm" onClick={query.retry}>
-            Reintentar
+            Try again
           </Button>
         }
       />
@@ -253,10 +253,10 @@ export function ProfileView() {
         <EmptyState
           icon={<HomeIcon size={26} />}
           title="Tu cuenta no tiene perfil de estudiante"
-          description="El perfil de preferencias de vivienda solo está disponible para cuentas de estudiante. Con tu cuenta puedes seguir explorando las propiedades publicadas."
+          description="The housing preferences profile is only available for student accounts. With your account you can keep exploring the published properties."
           action={
             <ButtonLink href="/properties" variant="accent" size="sm">
-              Explorar propiedades
+              Explore properties
             </ButtonLink>
           }
         />
@@ -273,8 +273,8 @@ export function ProfileView() {
       ) : (
         <EmptyState
           icon={<HomeIcon size={26} />}
-          title="Aún no tienes perfil"
-          description="Cuéntanos qué buscas en una vivienda. Completa el formulario de abajo para crear tu perfil de preferencias."
+          title="You do not have a profile yet"
+          description="Tell us what you are looking for in a place. Fill in the form below to create your preferences profile."
         />
       )}
 

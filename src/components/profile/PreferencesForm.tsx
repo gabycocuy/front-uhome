@@ -138,13 +138,13 @@ function validateForm(values: FormValues): {
 
   const maxBudget = parseWholeNumber(values.maxBudget);
   if (maxBudget === null || maxBudget <= 0) {
-    errors.maxBudget = "El presupuesto debe ser un número mayor que 0.";
+    errors.maxBudget = "Budget must be a number greater than 0.";
   }
 
   const maxDistanceToCampus = parseWholeNumber(values.maxDistanceToCampus);
   if (maxDistanceToCampus === null || maxDistanceToCampus <= 0) {
     errors.maxDistanceToCampus =
-      "La distancia debe ser un número de metros mayor que 0.";
+      "Distance must be a number of meters greater than 0.";
   }
 
   const { safetyPriority, nightlifePriority, amenitiesPriority } = values;
@@ -168,7 +168,7 @@ function validateForm(values: FormValues): {
     desiredStayMonths = parseWholeNumber(values.desiredStayMonths);
     if (desiredStayMonths === null || desiredStayMonths < 1) {
       errors.desiredStayMonths =
-        "La estancia debe ser un número entero de 1 mes o más.";
+        "Stay length must be a whole number of 1 month or more.";
     }
   }
 
@@ -179,12 +179,12 @@ function validateForm(values: FormValues): {
 
   const minBedrooms = parseWholeNumber(values.minBedrooms);
   if (minBedrooms === null) {
-    errors.minBedrooms = "Escribe un número entero de 0 o más.";
+    errors.minBedrooms = "Enter a whole number of 0 or more.";
   }
 
   const minBathrooms = parseWholeNumber(values.minBathrooms);
   if (minBathrooms === null) {
-    errors.minBathrooms = "Escribe un número entero de 0 o más.";
+    errors.minBathrooms = "Enter a whole number of 0 or more.";
   }
 
   if (
@@ -303,7 +303,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
 
   const propertyTypeHint =
     propertyTypesQuery.status === "loading"
-      ? "Cargando tipos de vivienda..."
+      ? "Loading housing types..."
       : propertyTypesQuery.status === "error"
         ? "No se pudieron cargar los tipos de vivienda."
         : undefined;
@@ -349,7 +349,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
         type: "success",
         message: isEditing
           ? "Tus preferencias se guardaron correctamente."
-          : "Tu perfil se creó correctamente.",
+          : "Your profile was created successfully.",
       });
     } catch (error) {
       setFeedback({
@@ -367,7 +367,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       <fieldset className={styles.group} disabled={saving}>
-        <legend className={styles.legend}>Datos básicos</legend>
+        <legend className={styles.legend}>Basics</legend>
         <div className={styles.grid}>
           <InputText
             id="university"
@@ -381,7 +381,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
           <InputText
             id="maxBudget"
             name="maxBudget"
-            label="Presupuesto máximo (COP al mes)"
+            label="Maximum budget (COP per month)"
             placeholder="Ej. 1300000"
             inputMode="numeric"
             value={values.maxBudget}
@@ -391,7 +391,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
           <InputText
             id="maxDistanceToCampus"
             name="maxDistanceToCampus"
-            label="Distancia máxima al campus (metros)"
+            label="Maximum distance to campus (meters)"
             placeholder="Ej. 800"
             inputMode="numeric"
             value={values.maxDistanceToCampus}
@@ -464,7 +464,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
           <InputText
             id="minBedrooms"
             name="minBedrooms"
-            label="Habitaciones mínimas"
+            label="Minimum bedrooms"
             inputMode="numeric"
             value={values.minBedrooms}
             onChange={updateField("minBedrooms")}
@@ -473,7 +473,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
           <InputText
             id="minBathrooms"
             name="minBathrooms"
-            label="Baños mínimos"
+            label="Minimum bathrooms"
             inputMode="numeric"
             value={values.minBathrooms}
             onChange={updateField("minBathrooms")}
