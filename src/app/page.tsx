@@ -36,7 +36,7 @@ export default function LandingPage() {
       <div className={styles.panel}>
         <Navbar
           links={navLinks}
-          account={<AccountLink href="/login" label="Iniciar sesión" />}
+          account={<AccountLink href="/login" label="Log in" />}
         />
 
         <section className={styles.hero} aria-labelledby="hero-title">

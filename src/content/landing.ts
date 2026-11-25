@@ -17,16 +17,16 @@ export type Tone =
 
 export const navLinks: NavbarLink[] = [
   { label: "Funciones", href: "#funciones" },
-  { label: "Cómo funciona", href: "#como-funciona" },
+  { label: "How it works", href: "#como-funciona" },
   { label: "Opiniones", href: "#opiniones" },
 ];
 
 export const hero = {
   title: "Encuentra vivienda estudiantil con",
   accent: "confianza.",
-  text: "Compara precio, distancia, seguridad y reseñas reales de estudiantes, todo en un solo lugar.",
+  text: "Compare price, distance, safety and real student reviews, all in one place.",
   primaryCta: "Empezar a buscar",
-  secondaryCta: "Cómo funciona",
+  secondaryCta: "How it works",
 };
 
 export const heroCards: Array<{
@@ -52,7 +52,7 @@ export const heroCards: Array<{
   },
   {
     tone: "orange",
-    label: "Calificación",
+    label: "Rating",
     value: "4,5",
     unit: "de 5",
     note: "Basado en 32 estudiantes",
@@ -62,9 +62,9 @@ export const heroCards: Array<{
 export const problem = {
   title: "El problema",
   items: [
-    { tone: "blue" as Tone, text: "¿Es seguro?" },
-    { tone: "green" as Tone, text: "¿Está bien ubicado?" },
-    { tone: "orange" as Tone, text: "¿Vale lo que cuesta?" },
+    { tone: "blue" as Tone, text: "Is it safe?" },
+    { tone: "green" as Tone, text: "Is it well located?" },
+    { tone: "orange" as Tone, text: "Is it worth the price?" },
   ],
   note: "Las plataformas tradicionales muestran anuncios.",
   strong: "UHome te ayuda a decidir.",
@@ -75,13 +75,13 @@ export const features = {
   items: [
     {
       tone: "green" as Tone,
-      title: "Búsqueda inteligente",
-      text: "Filtros dinámicos por precio, distancia al campus y tipo de vivienda.",
+      title: "Smart search",
+      text: "Dynamic filters by price, distance to campus and housing type.",
     },
     {
       tone: "blue" as Tone,
       title: "Analizador de ambiente",
-      text: "Cómo es la zona de cada vivienda: tranquilidad, vida nocturna y lugares de estudio.",
+      text: "What the area around each place is like: quietness, nightlife and study spots.",
     },
     {
       tone: "orange" as Tone,
@@ -90,14 +90,14 @@ export const features = {
     },
     {
       tone: "lilac" as Tone,
-      title: "Reseñas de estudiantes",
+      title: "Student reviews",
       text: "Opiniones de otros estudiantes sobre cada vivienda.",
     },
   ],
 };
 
 export const steps = {
-  title: "¿Cómo funciona?",
+  title: "How it works",
   items: [
     { tone: "periwinkle" as Tone, text: "Crea tu perfil" },
     { tone: "green" as Tone, text: "Define tus prioridades" },
@@ -106,16 +106,16 @@ export const steps = {
 };
 
 export const vibe = {
-  title: "¿Qué es el analizador de ambiente?",
+  title: "What is the Student Vibe Analyzer?",
   paragraphs: [
-    "El analizador de ambiente es un indicador de estilo de vida que te ayuda a entender el entorno de una vivienda, más allá de la distancia o el precio.",
-    "En lugar de mostrar solo qué tan lejos queda del campus, analiza la atmósfera de la zona y qué tan bien encaja con tu día a día.",
+    "The Student Vibe Analyzer is a lifestyle indicator that helps you understand the surroundings of a place, beyond distance or price.",
+    "Instead of only showing how far it is from campus, it analyzes the atmosphere of the area and how well it fits your day-to-day life.",
   ],
   tags: [
     "Porcentaje de estudiantes que viven cerca",
     "Acceso a servicios esenciales",
     "Tranquilidad y espacios para estudiar",
-    "Cafés y sitios de estudio cercanos",
+    "Nearby cafés and study spots",
     "Nivel de vida nocturna",
   ],
 };
@@ -125,31 +125,31 @@ export const testimonials = {
   items: [
     {
       tone: "green" as Tone,
-      text: "Me encanta lo claras que son las publicaciones. Me ahorró mucho tiempo.",
+      text: "I love how clear the listings are. It saved me a lot of time.",
     },
     {
       tone: "tan" as Tone,
-      text: "Esta app me ayudó a encontrar un lugar que de verdad se ajusta a lo que necesito.",
+      text: "This app helped me find a place that really fits what I need.",
     },
     {
       tone: "crimson" as Tone,
-      text: "Con esta app fue mucho más fácil encontrar cuarto cerca de la universidad.",
+      text: "With this app it was much easier to find a room near the university.",
     },
     {
       tone: "blueStrong" as Tone,
-      text: "Me mudé en menos de una semana gracias a esta app.",
+      text: "I moved in less than a week after starting with this app.",
     },
     {
       tone: "peach" as Tone,
-      text: "Habitación amplia y mucha privacidad.",
+      text: "Spacious room and plenty of privacy.",
     },
     {
       tone: "pink" as Tone,
-      text: "Convirtió una búsqueda complicada en una experiencia sencilla.",
+      text: "It turned a complicated search into a simple experience.",
     },
     {
       tone: "purple" as Tone,
-      text: "Me encanta lo fácil que es navegar.",
+      text: "I love how easy it is to navigate.",
     },
     {
       tone: "sky" as Tone,
@@ -167,18 +167,18 @@ export const footer: {
   tagline: "Encuentra tu lugar, vive a tu manera.",
   columns: [
     {
-      title: "Enlaces rápidos",
+      title: "Quick links",
       links: [
         { label: "Ver viviendas", href: "/properties" },
-        { label: "Cómo funciona", href: "/#como-funciona" },
-        { label: "Iniciar sesión", href: "/login" },
+        { label: "How it works", href: "/#como-funciona" },
+        { label: "Log in", href: "/login" },
         { label: "Crear cuenta", href: "/register" },
       ],
     },
     {
       title: "Recursos",
       links: [
-        { label: "Guías para estudiantes" },
+        { label: "Student guides" },
         { label: "Blog" },
         { label: "Consejos de seguridad" },
         { label: "Soporte" },
@@ -187,9 +187,9 @@ export const footer: {
     {
       title: "Legal",
       links: [
-        { label: "Política de privacidad" },
-        { label: "Términos del servicio" },
-        { label: "Política de reembolso" },
+        { label: "Privacy policy" },
+        { label: "Terms of service" },
+        { label: "Refund policy" },
       ],
     },
   ],

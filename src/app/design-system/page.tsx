@@ -113,14 +113,14 @@ export default function DesignSystemPage() {
           <Button variant="accent">Accent</Button>
           <Button variant="outline">Outline</Button>
           <Button variant="primary" loading>
-            Cargando
+            Loading
           </Button>
           <Button variant="primary" disabled>
             Disabled
           </Button>
         </div>
 
-        <h2>Tamaños</h2>
+        <h2>Sizes</h2>
         <div
           style={{
             display: "flex",
@@ -145,7 +145,7 @@ export default function DesignSystemPage() {
             id="ds-text-error"
             label="Con error"
             defaultValue="correo-invalido"
-            error="Escribe un correo válido."
+            error="Enter a valid email."
           />
           <InputText
             id="ds-text-disabled"
@@ -160,13 +160,13 @@ export default function DesignSystemPage() {
           <InputPassword
             id="ds-password-normal"
             label="Normal"
-            placeholder="Tu contraseña"
+            placeholder="Your password"
           />
           <InputPassword
             id="ds-password-error"
             label="Con error"
             defaultValue="123"
-            error="La contraseña debe tener al menos 8 caracteres."
+            error="Password must be at least 8 characters."
           />
           <InputPassword
             id="ds-password-disabled"
@@ -177,7 +177,7 @@ export default function DesignSystemPage() {
         </div>
 
         <h2>Badge</h2>
-        <p style={captionStyle}>Tonos (tamaño md)</p>
+        <p style={captionStyle}>Tones (size md)</p>
         <div style={rowStyle}>
           {badgeTones.map(([tone, label]) => (
             <Badge key={tone} tone={tone}>
@@ -185,7 +185,7 @@ export default function DesignSystemPage() {
             </Badge>
           ))}
         </div>
-        <p style={{ ...captionStyle, marginTop: 16 }}>Tamaño sm y con ícono</p>
+        <p style={{ ...captionStyle, marginTop: 16 }}>Size sm and with icon</p>
         <div style={rowStyle}>
           <Badge tone="distance" size="sm" icon={<MapPinIcon size={14} />}>
             650 m del campus
@@ -202,7 +202,7 @@ export default function DesignSystemPage() {
         <div style={gridStyle}>
           <Card>
             <CardHeader>
-              <strong>Card básica</strong>
+              <strong>Basic card</strong>
             </CardHeader>
             <CardBody>
               <p style={{ margin: 0 }}>
@@ -212,7 +212,7 @@ export default function DesignSystemPage() {
             <CardFooter>
               <Badge tone="price">$1.200.000</Badge>
               <Button size="sm" variant="outline">
-                Ver más
+                See more
               </Button>
             </CardFooter>
           </Card>
@@ -237,7 +237,7 @@ export default function DesignSystemPage() {
         <div style={rowStyle}>
           <Avatar name="Ana Torres" size="sm" />
           <Avatar name="Carlos Mendoza" size="md" />
-          <Avatar name="Laura Gómez" size="lg" />
+          <Avatar name="Laura Gomez" size="lg" />
         </div>
 
         <h2>Pagination</h2>
@@ -251,7 +251,7 @@ export default function DesignSystemPage() {
         <div style={gridStyle}>
           <EmptyState
             icon={<SearchIcon size={26} />}
-            title="No encontramos propiedades"
+            title="No properties found"
             description="Prueba con otros filtros de precio o distancia."
             action={
               <Button size="sm" variant="accent">
@@ -261,11 +261,11 @@ export default function DesignSystemPage() {
           />
           <EmptyState
             tone="error"
-            title="No pudimos cargar la información"
-            description="Revisa tu conexión e inténtalo de nuevo."
+            title="We couldn't load the information"
+            description="Check your connection and try again."
             action={
               <Button size="sm" variant="accent">
-                Reintentar
+                Try again
               </Button>
             }
           />
