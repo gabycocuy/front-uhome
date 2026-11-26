@@ -22,10 +22,10 @@ export const navLinks: NavbarLink[] = [
 ];
 
 export const hero = {
-  title: "Encuentra vivienda estudiantil con",
-  accent: "confianza.",
+  title: "Find student housing with",
+  accent: "confidence.",
   text: "Compare price, distance, safety and real student reviews, all in one place.",
-  primaryCta: "Empezar a buscar",
+  primaryCta: "Start searching",
   secondaryCta: "How it works",
 };
 
@@ -38,14 +38,14 @@ export const heroCards: Array<{
 }> = [
   {
     tone: "green",
-    label: "Precio",
+    label: "Price",
     value: "$450.000",
     unit: "/ mes",
     note: "Seguridad: 8,7",
   },
   {
     tone: "blue",
-    label: "Distancia",
+    label: "Distance",
     value: "12 min",
     unit: "caminando",
     note: "900 m del campus",
@@ -55,7 +55,7 @@ export const heroCards: Array<{
     label: "Rating",
     value: "4,5",
     unit: "de 5",
-    note: "Basado en 32 estudiantes",
+    note: "Based on 32 students",
   },
 ];
 
@@ -66,7 +66,7 @@ export const problem = {
     { tone: "green" as Tone, text: "Is it well located?" },
     { tone: "orange" as Tone, text: "Is it worth the price?" },
   ],
-  note: "Las plataformas tradicionales muestran anuncios.",
+  note: "Traditional platforms only show ads.",
   strong: "UHome te ayuda a decidir.",
 };
 
@@ -85,13 +85,13 @@ export const features = {
     },
     {
       tone: "orange" as Tone,
-      title: "Favoritos",
-      text: "Guarda las viviendas que te interesan y vuelve a ellas cuando quieras.",
+      title: "Favorites",
+      text: "Save the places you like and come back to them whenever you want.",
     },
     {
       tone: "lilac" as Tone,
       title: "Student reviews",
-      text: "Opiniones de otros estudiantes sobre cada vivienda.",
+      text: "Opinions from other students about each place.",
     },
   ],
 };
@@ -99,9 +99,9 @@ export const features = {
 export const steps = {
   title: "How it works",
   items: [
-    { tone: "periwinkle" as Tone, text: "Crea tu perfil" },
-    { tone: "green" as Tone, text: "Define tus prioridades" },
-    { tone: "orange" as Tone, text: "Elige con confianza" },
+    { tone: "periwinkle" as Tone, text: "Create your profile" },
+    { tone: "green" as Tone, text: "Set your priorities" },
+    { tone: "orange" as Tone, text: "Choose with confidence" },
   ],
 };
 
@@ -112,9 +112,9 @@ export const vibe = {
     "Instead of only showing how far it is from campus, it analyzes the atmosphere of the area and how well it fits your day-to-day life.",
   ],
   tags: [
-    "Porcentaje de estudiantes que viven cerca",
+    "Percentage of students living nearby",
     "Acceso a servicios esenciales",
-    "Tranquilidad y espacios para estudiar",
+    "Quietness and places to study",
     "Nearby cafés and study spots",
     "Nivel de vida nocturna",
   ],
@@ -153,7 +153,7 @@ export const testimonials = {
     },
     {
       tone: "sky" as Tone,
-      text: "Agradezco lo detalladas y transparentes que son las publicaciones.",
+      text: "I appreciate how detailed and transparent the listings are.",
     },
   ],
 };
@@ -164,15 +164,15 @@ export const footer: {
   contact: FooterContact;
   copyright: string;
 } = {
-  tagline: "Encuentra tu lugar, vive a tu manera.",
+  tagline: "Find your place. Fit your lifestyle.",
   columns: [
     {
       title: "Quick links",
       links: [
-        { label: "Ver viviendas", href: "/properties" },
+        { label: "Browse places", href: "/properties" },
         { label: "How it works", href: "/#como-funciona" },
         { label: "Log in", href: "/login" },
-        { label: "Crear cuenta", href: "/register" },
+        { label: "Create account", href: "/register" },
       ],
     },
     {
@@ -198,5 +198,5 @@ export const footer: {
     phone: "+57 300 000 0000",
     address: "Bogotá, Colombia",
   },
-  copyright: "© 2026 UHome. Todos los derechos reservados.",
+  copyright: "© 2026 UHome. All rights reserved.",
 };

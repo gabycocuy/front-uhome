@@ -133,7 +133,7 @@ function validateForm(values: FormValues): {
 
   const university = values.university.trim();
   if (!university) {
-    errors.university = "Escribe el nombre de tu universidad.";
+    errors.university = "Enter the name of your university.";
   }
 
   const maxBudget = parseWholeNumber(values.maxBudget);
@@ -160,7 +160,7 @@ function validateForm(values: FormValues): {
 
   const { vibePreference } = values;
   if (!isVibePreference(vibePreference)) {
-    errors.vibePreference = "Elige una de las vibras de la lista.";
+    errors.vibePreference = "Choose one of the vibes in the list.";
   }
 
   let desiredStayMonths: number | null = null;
@@ -294,7 +294,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
     (profile?.preferredPropertyType ? [profile.preferredPropertyType] : []);
 
   const propertyTypeOptions: SelectOption[] = [
-    { value: "", label: "Sin preferencia" },
+    { value: "", label: "No preference" },
     ...availableTypes.map((type) => ({
       value: String(type.id),
       label: capitalize(type.name),
@@ -305,7 +305,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
     propertyTypesQuery.status === "loading"
       ? "Loading housing types..."
       : propertyTypesQuery.status === "error"
-        ? "No se pudieron cargar los tipos de vivienda."
+        ? "Could not load the housing types."
         : undefined;
 
   function updateField(field: TextField) {
@@ -331,7 +331,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
     if (!result.data) {
       setFeedback({
         type: "error",
-        message: "Revisa los campos marcados en rojo.",
+        message: "Check the fields marked in red.",
       });
       return;
     }
@@ -348,7 +348,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
       setFeedback({
         type: "success",
         message: isEditing
-          ? "Tus preferencias se guardaron correctamente."
+          ? "Your preferences were saved successfully."
           : "Your profile was created successfully.",
       });
     } catch (error) {
@@ -357,7 +357,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
         message:
           error instanceof Error && error.message
             ? error.message
-            : "No se pudieron guardar los cambios.",
+            : "Could not save the changes.",
       });
     } finally {
       setSaving(false);
@@ -422,7 +422,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
           />
           <SelectField
             id="amenitiesPriority"
-            label="Amenidades"
+            label="Amenities"
             value={values.amenitiesPriority}
             options={priorityOptions}
             onChange={updateField("amenitiesPriority")}
@@ -440,11 +440,11 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
       </fieldset>
 
       <fieldset className={styles.group} disabled={saving}>
-        <legend className={styles.legend}>Vivienda ideal</legend>
+        <legend className={styles.legend}>Ideal place</legend>
         <div className={styles.grid}>
           <SelectField
             id="preferredPropertyTypeId"
-            label="Tipo de vivienda"
+            label="Housing type"
             value={values.preferredPropertyTypeId}
             options={propertyTypeOptions}
             onChange={updateField("preferredPropertyTypeId")}
@@ -488,7 +488,7 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
             checked={values.petFriendly}
             onChange={handlePetFriendlyChange}
           />
-          Necesito un lugar que acepte mascotas
+          I need a place that accepts pets
         </label>
       </fieldset>
 
@@ -497,8 +497,8 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
           {saving
             ? "Guardando..."
             : isEditing
-              ? "Guardar cambios"
-              : "Crear mi perfil"}
+              ? "Save changes"
+              : "Create my profile"}
         </Button>
 
         {feedback ? (

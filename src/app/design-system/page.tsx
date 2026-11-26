@@ -139,12 +139,12 @@ export default function DesignSystemPage() {
           <InputText
             id="ds-text-normal"
             label="Normal"
-            placeholder="tu.correo@uhome.com"
+            placeholder="your.email@uhome.com"
           />
           <InputText
             id="ds-text-error"
-            label="Con error"
-            defaultValue="correo-invalido"
+            label="With error"
+            defaultValue="invalid-email"
             error="Enter a valid email."
           />
           <InputText
@@ -164,7 +164,7 @@ export default function DesignSystemPage() {
           />
           <InputPassword
             id="ds-password-error"
-            label="Con error"
+            label="With error"
             defaultValue="123"
             error="Password must be at least 8 characters."
           />
@@ -206,7 +206,7 @@ export default function DesignSystemPage() {
             </CardHeader>
             <CardBody>
               <p style={{ margin: 0 }}>
-                Contenedor con encabezado, cuerpo y pie.
+                Container with header, body and footer.
               </p>
             </CardBody>
             <CardFooter>
@@ -252,7 +252,7 @@ export default function DesignSystemPage() {
           <EmptyState
             icon={<SearchIcon size={26} />}
             title="No properties found"
-            description="Prueba con otros filtros de precio o distancia."
+            description="Try other price or distance filters."
             action={
               <Button size="sm" variant="accent">
                 Limpiar filtros

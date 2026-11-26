@@ -75,7 +75,7 @@ export function Pagination({
         aria-label="Previous page"
       >
         <ChevronLeftIcon size={18} />
-        <span className={styles.stepLabel}>Anterior</span>
+        <span className={styles.stepLabel}>Previous</span>
       </button>
 
       <ul className={styles.pages}>
@@ -115,7 +115,7 @@ export function Pagination({
         disabled={isLast}
         aria-label="Next page"
       >
-        <span className={styles.stepLabel}>Siguiente</span>
+        <span className={styles.stepLabel}>Next</span>
         <ChevronRightIcon size={18} />
       </button>
     </nav>

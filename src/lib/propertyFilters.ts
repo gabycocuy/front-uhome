@@ -57,7 +57,7 @@ export interface LifestyleOption {
  */
 export const LIFESTYLE_OPTIONS: LifestyleOption[] = [
   { value: "quiet", label: "Tranquilo", metric: "quietness" },
-  { value: "study", label: "Ideal para estudiar", metric: "studySpots" },
+  { value: "study", label: "Great for studying", metric: "studySpots" },
   { value: "student", label: "Ambiente estudiantil", metric: "studentDensity" },
   { value: "nightlife", label: "Vida nocturna", metric: "nightlife" },
   { value: "essentials", label: "Servicios cerca", metric: "essentialSpots" },

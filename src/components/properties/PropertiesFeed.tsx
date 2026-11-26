@@ -216,7 +216,7 @@ export function PropertiesFeed() {
         description={
           activeCount > 0
             ? "Try another search term or adjust the filters."
-            : "Vuelve pronto para descubrir nuevas opciones de vivienda."
+            : "Check back soon to discover new housing options."
         }
         action={
           activeCount > 0 ? (

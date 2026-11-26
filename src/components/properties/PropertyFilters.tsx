@@ -127,9 +127,9 @@ export function PropertyFilters({
 
       <div className={styles.filters}>
         <FilterSelect
-          label="Precio"
+          label="Price"
           tone="price"
-          allLabel="Cualquier precio"
+          allLabel="Any price"
           value={filters.maxPrice === null ? "" : String(filters.maxPrice)}
           options={PRICE_OPTIONS.map((price) => ({
             value: String(price),
@@ -139,9 +139,9 @@ export function PropertyFilters({
         />
 
         <FilterSelect
-          label="Tipo de vivienda"
+          label="Housing type"
           tone="type"
-          allLabel="Todos los tipos"
+          allLabel="All types"
           value={filters.type === null ? "" : String(filters.type)}
           options={typeOptions.map((type) => ({
             value: String(type.id),
@@ -152,9 +152,9 @@ export function PropertyFilters({
         />
 
         <FilterSelect
-          label="Distancia al campus"
+          label="Distance to campus"
           tone="distance"
-          allLabel="Cualquier distancia"
+          allLabel="Any distance"
           value={filters.maxDistance === null ? "" : String(filters.maxDistance)}
           options={DISTANCE_OPTIONS.map((meters) => ({
             value: String(meters),

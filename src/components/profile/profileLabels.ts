@@ -17,7 +17,7 @@ export const vibeLabels: Record<VibePreference, string> = {
 };
 
 const roleLabels: Record<string, string> = {
-  student: "Estudiante",
+  student: "Student",
   landlord: "Arrendador",
   admin: "Administrador",
 };
@@ -51,7 +51,7 @@ export function formatMemberSince(isoDate: string): string | null {
 
 export function formatStayMonths(months: number | null): string {
   if (months === null) {
-    return "Sin definir";
+    return "Not set";
   }
 
   return `${months} ${months === 1 ? "mes" : "meses"}`;

@@ -58,7 +58,7 @@ async function loadProfilePage(): Promise<ProfilePageData> {
 
   return {
     profile,
-    fullName: account?.fullName ?? user?.fullName ?? "Usuario",
+    fullName: account?.fullName ?? user?.fullName ?? "User",
     role: account?.role?.name ?? user?.role ?? null,
     memberSince: account ? formatMemberSince(account.createdAt) : null,
   };
@@ -88,7 +88,7 @@ function buildPreferenceItems(profile: StudentProfile): PreferenceItem[] {
       chip: "preferences",
     },
     {
-      label: "Prioridad de amenidades",
+      label: "Amenities priority",
       value: priorityLabels[profile.amenitiesPriority],
       chip: "preferences",
     },
@@ -104,13 +104,13 @@ function buildPreferenceItems(profile: StudentProfile): PreferenceItem[] {
     },
     profile.preferredPropertyType
       ? {
-          label: "Tipo de vivienda",
+          label: "Housing type",
           value: capitalize(profile.preferredPropertyType.name),
           tone: "type",
         }
       : {
-          label: "Tipo de vivienda",
-          value: "Sin preferencia",
+          label: "Housing type",
+          value: "No preference",
           chip: "preferences",
         },
     {
@@ -125,7 +125,7 @@ function buildPreferenceItems(profile: StudentProfile): PreferenceItem[] {
     },
     {
       label: "Mascotas",
-      value: profile.petFriendly ? "Necesito que las acepten" : "No las necesito",
+      value: profile.petFriendly ? "Needs pet-friendly" : "Not needed",
       chip: "preferences",
     },
   ];
@@ -152,7 +152,7 @@ function AccountHeader({ fullName, role, memberSince }: AccountHeaderProps) {
   const roleLabel = formatRole(role);
 
   return (
-    <Card as="section" className={styles.account} aria-label="Tu cuenta">
+    <Card as="section" className={styles.account} aria-label="Your account">
       <Avatar name={fullName} size="lg" />
       <div className={styles.accountInfo}>
         <h2 className={styles.accountName}>{fullName}</h2>
@@ -176,7 +176,7 @@ function PreferencesSummary({ profile }: { profile: StudentProfile }) {
     <Card as="section" aria-labelledby="preferences-title">
       <CardHeader>
         <h2 id="preferences-title" className={styles.sectionTitle}>
-          Tus preferencias
+          Your preferences
         </h2>
       </CardHeader>
       <CardBody>
@@ -228,7 +228,7 @@ export function ProfileView() {
     return (
       <EmptyState
         tone="error"
-        title="No pudimos cargar tu perfil"
+        title="We couldn't load your profile"
         description={query.error ?? undefined}
         action={
           <Button variant="accent" size="sm" onClick={query.retry}>
@@ -252,7 +252,7 @@ export function ProfileView() {
         />
         <EmptyState
           icon={<HomeIcon size={26} />}
-          title="Tu cuenta no tiene perfil de estudiante"
+          title="Your account does not have a student profile"
           description="The housing preferences profile is only available for student accounts. With your account you can keep exploring the published properties."
           action={
             <ButtonLink href="/properties" variant="accent" size="sm">
@@ -278,7 +278,7 @@ export function ProfileView() {
         />
       )}
 
-      <FormSection title={profile ? "Editar preferencias" : "Crea tu perfil"}>
+      <FormSection title={profile ? "Edit preferences" : "Create your profile"}>
         <PreferencesForm profile={profile} onSaved={setSavedProfile} />
       </FormSection>
     </div>

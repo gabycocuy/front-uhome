@@ -80,7 +80,7 @@ export function PropertyCard({ property, rating, favorite }: PropertyCardProps) 
         <p className={styles.description}>{property.description}</p>
 
         {amenities.length > 0 ? (
-          <ul className={styles.amenities} aria-label="Amenidades">
+          <ul className={styles.amenities} aria-label="Amenities">
             {amenities.slice(0, VISIBLE_AMENITIES).map((amenity) => (
               <li key={amenity.id}>
                 <Badge size="sm">{amenity.name}</Badge>
