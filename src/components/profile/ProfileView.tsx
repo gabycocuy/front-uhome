@@ -66,7 +66,7 @@ async function loadProfilePage(): Promise<ProfilePageData> {
 
 function buildPreferenceItems(profile: StudentProfile): PreferenceItem[] {
   return [
-    { label: "Universidad", value: profile.university, chip: "university" },
+    { label: "University", value: profile.university, chip: "university" },
     {
       label: "Maximum budget",
       value: `${formatPrice(profile.maxBudget)} al mes`,
@@ -124,7 +124,7 @@ function buildPreferenceItems(profile: StudentProfile): PreferenceItem[] {
       chip: "preferences",
     },
     {
-      label: "Mascotas",
+      label: "Pets",
       value: profile.petFriendly ? "Needs pet-friendly" : "Not needed",
       chip: "preferences",
     },

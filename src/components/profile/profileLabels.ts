@@ -10,7 +10,7 @@ export const priorityLabels: Record<PriorityLevel, string> = {
 };
 
 export const vibeLabels: Record<VibePreference, string> = {
-  tranquilo: "Tranquilo",
+  tranquilo: "Quiet",
   equilibrado: "Equilibrado",
   social: "Social",
   estudioso: "Estudioso",

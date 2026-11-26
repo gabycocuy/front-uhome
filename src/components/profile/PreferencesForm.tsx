@@ -372,8 +372,8 @@ export function PreferencesForm({ profile, onSaved }: PreferencesFormProps) {
           <InputText
             id="university"
             name="university"
-            label="Universidad"
-            placeholder="Ej. Universidad Nacional"
+            label="University"
+            placeholder="E.g. National University"
             value={values.university}
             onChange={updateField("university")}
             error={errors.university}

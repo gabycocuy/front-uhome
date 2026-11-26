@@ -42,7 +42,7 @@ const badgeTones: Array<[BadgeTone, string]> = [
   ["price", "$1.200.000"],
   ["type", "apartamento"],
   ["distance", "650 m"],
-  ["lifestyle", "Tranquilo"],
+  ["lifestyle", "Quiet"],
   ["success", "Disponible"],
   ["muted", "No disponible"],
 ];
