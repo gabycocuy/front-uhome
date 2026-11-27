@@ -54,7 +54,7 @@ export function Pagination({
   totalPages,
   onPageChange,
   siblingCount = 1,
-  label = "Paginación",
+  label = "Pagination",
   className,
 }: PaginationProps) {
   if (totalPages <= 1) {
@@ -72,10 +72,10 @@ export function Pagination({
         className={cx(styles.control, styles.step)}
         onClick={() => onPageChange(currentPage - 1)}
         disabled={isFirst}
-        aria-label="Página anterior"
+        aria-label="Previous page"
       >
         <ChevronLeftIcon size={18} />
-        <span className={styles.stepLabel}>Anterior</span>
+        <span className={styles.stepLabel}>Previous</span>
       </button>
 
       <ul className={styles.pages}>
@@ -91,7 +91,7 @@ export function Pagination({
                 )}
                 onClick={() => onPageChange(item)}
                 aria-current={item === currentPage ? "page" : undefined}
-                aria-label={`Página ${item}`}
+                aria-label={`Page ${item}`}
               >
                 {item}
               </button>
@@ -105,7 +105,7 @@ export function Pagination({
       </ul>
 
       <p className={styles.status} aria-live="polite">
-        Página {currentPage} de {totalPages}
+        Page {currentPage} of {totalPages}
       </p>
 
       <button
@@ -113,9 +113,9 @@ export function Pagination({
         className={cx(styles.control, styles.step)}
         onClick={() => onPageChange(currentPage + 1)}
         disabled={isLast}
-        aria-label="Página siguiente"
+        aria-label="Next page"
       >
-        <span className={styles.stepLabel}>Siguiente</span>
+        <span className={styles.stepLabel}>Next</span>
         <ChevronRightIcon size={18} />
       </button>
     </nav>

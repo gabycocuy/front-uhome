@@ -193,17 +193,17 @@ export function PropertiesFeed() {
     content = (
       <EmptyState
         tone="error"
-        title="No pudimos cargar las propiedades"
+        title="We couldn't load the properties"
         description={propertiesQuery.error ?? undefined}
         action={
           <Button variant="accent" size="sm" onClick={propertiesQuery.retry}>
-            Reintentar
+            Try again
           </Button>
         }
       />
     );
   } else if (isLoading) {
-    content = <Spinner message="Cargando propiedades..." />;
+    content = <Spinner message="Loading properties..." />;
   } else if (filtered.length === 0) {
     content = (
       <EmptyState
@@ -211,12 +211,12 @@ export function PropertiesFeed() {
         title={
           activeCount > 0
             ? "No encontramos coincidencias"
-            : "Aún no hay propiedades publicadas"
+            : "There are no published properties yet"
         }
         description={
           activeCount > 0
-            ? "Prueba con otro término de búsqueda o ajusta los filtros."
-            : "Vuelve pronto para descubrir nuevas opciones de vivienda."
+            ? "Try another search term or adjust the filters."
+            : "Check back soon to discover new housing options."
         }
         action={
           activeCount > 0 ? (
@@ -234,8 +234,8 @@ export function PropertiesFeed() {
           <p className={styles.count}>
             <strong>{filtered.length}</strong>{" "}
             {filtered.length === 1
-              ? "propiedad encontrada"
-              : "propiedades encontradas"}
+              ? "property found"
+              : "properties found"}
           </p>
           <p className={styles.range}>
             Mostrando {firstIndex + 1}–{firstIndex + pageItems.length} de{" "}
@@ -257,7 +257,7 @@ export function PropertiesFeed() {
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}
-          label="Paginación de propiedades"
+          label="Properties pagination"
         />
       </>
     );
@@ -280,7 +280,7 @@ export function PropertiesFeed() {
         {lifestyleUnavailable && state.lifestyle !== null ? (
           <Alert
             type="info"
-            message="No se pudo cargar el análisis de ambiente, por eso el filtro de estilo de vida no se está aplicando."
+            message="The vibe analysis could not be loaded, so the lifestyle filter is not being applied."
           />
         ) : null}
         <FavoritesNotice favorites={favorites} />

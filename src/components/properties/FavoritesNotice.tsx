@@ -10,10 +10,6 @@ export interface FavoritesNoticeProps {
   favorites: FavoritesController;
 }
 
-/**
- * Errores de favoritos que no bloquean la pantalla: fallo al cargar la
- * lista (con reintento) o fallo al agregar/quitar una propiedad.
- */
 export function FavoritesNotice({ favorites }: FavoritesNoticeProps) {
   return (
     <>
@@ -21,10 +17,10 @@ export function FavoritesNotice({ favorites }: FavoritesNoticeProps) {
         <div className={styles.notice}>
           <Alert
             type="error"
-            message={`No pudimos cargar tus favoritos: ${favorites.error ?? "error desconocido"}.`}
+            message={`We couldn't load your favorites: ${favorites.error ?? "unknown error"}.`}
           />
           <Button variant="outline" size="sm" onClick={favorites.reload}>
-            Reintentar
+            Try again
           </Button>
         </div>
       ) : null}
@@ -37,7 +33,7 @@ export function FavoritesNotice({ favorites }: FavoritesNoticeProps) {
             size="sm"
             onClick={favorites.dismissActionError}
           >
-            Cerrar
+            Close
           </Button>
         </div>
       ) : null}

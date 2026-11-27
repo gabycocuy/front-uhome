@@ -58,7 +58,7 @@ async function loadProfilePage(): Promise<ProfilePageData> {
 
   return {
     profile,
-    fullName: account?.fullName ?? user?.fullName ?? "Usuario",
+    fullName: account?.fullName ?? user?.fullName ?? "User",
     role: account?.role?.name ?? user?.role ?? null,
     memberSince: account ? formatMemberSince(account.createdAt) : null,
   };
@@ -66,14 +66,14 @@ async function loadProfilePage(): Promise<ProfilePageData> {
 
 function buildPreferenceItems(profile: StudentProfile): PreferenceItem[] {
   return [
-    { label: "Universidad", value: profile.university, chip: "university" },
+    { label: "University", value: profile.university, chip: "university" },
     {
-      label: "Presupuesto máximo",
+      label: "Maximum budget",
       value: `${formatPrice(profile.maxBudget)} al mes`,
       tone: "price",
     },
     {
-      label: "Distancia máxima al campus",
+      label: "Maximum distance to campus",
       value: formatDistance(profile.maxDistanceToCampus),
       tone: "distance",
     },
@@ -88,7 +88,7 @@ function buildPreferenceItems(profile: StudentProfile): PreferenceItem[] {
       chip: "preferences",
     },
     {
-      label: "Prioridad de amenidades",
+      label: "Amenities priority",
       value: priorityLabels[profile.amenitiesPriority],
       chip: "preferences",
     },
@@ -104,28 +104,28 @@ function buildPreferenceItems(profile: StudentProfile): PreferenceItem[] {
     },
     profile.preferredPropertyType
       ? {
-          label: "Tipo de vivienda",
+          label: "Housing type",
           value: capitalize(profile.preferredPropertyType.name),
           tone: "type",
         }
       : {
-          label: "Tipo de vivienda",
-          value: "Sin preferencia",
+          label: "Housing type",
+          value: "No preference",
           chip: "preferences",
         },
     {
-      label: "Habitaciones mínimas",
-      value: formatCount(profile.minBedrooms, "habitación", "habitaciones"),
+      label: "Minimum bedrooms",
+      value: formatCount(profile.minBedrooms, "bedroom", "bedrooms"),
       chip: "preferences",
     },
     {
-      label: "Baños mínimos",
-      value: formatCount(profile.minBathrooms, "baño", "baños"),
+      label: "Minimum bathrooms",
+      value: formatCount(profile.minBathrooms, "bathroom", "bathrooms"),
       chip: "preferences",
     },
     {
-      label: "Mascotas",
-      value: profile.petFriendly ? "Necesito que las acepten" : "No las necesito",
+      label: "Pets",
+      value: profile.petFriendly ? "Needs pet-friendly" : "Not needed",
       chip: "preferences",
     },
   ];
@@ -152,7 +152,7 @@ function AccountHeader({ fullName, role, memberSince }: AccountHeaderProps) {
   const roleLabel = formatRole(role);
 
   return (
-    <Card as="section" className={styles.account} aria-label="Tu cuenta">
+    <Card as="section" className={styles.account} aria-label="Your account">
       <Avatar name={fullName} size="lg" />
       <div className={styles.accountInfo}>
         <h2 className={styles.accountName}>{fullName}</h2>
@@ -176,7 +176,7 @@ function PreferencesSummary({ profile }: { profile: StudentProfile }) {
     <Card as="section" aria-labelledby="preferences-title">
       <CardHeader>
         <h2 id="preferences-title" className={styles.sectionTitle}>
-          Tus preferencias
+          Your preferences
         </h2>
       </CardHeader>
       <CardBody>
@@ -221,18 +221,18 @@ export function ProfileView() {
   );
 
   if (query.status === "loading") {
-    return <Spinner message="Cargando tu perfil..." />;
+    return <Spinner message="Loading your profile..." />;
   }
 
   if (query.status === "error" || !query.data) {
     return (
       <EmptyState
         tone="error"
-        title="No pudimos cargar tu perfil"
+        title="We couldn't load your profile"
         description={query.error ?? undefined}
         action={
           <Button variant="accent" size="sm" onClick={query.retry}>
-            Reintentar
+            Try again
           </Button>
         }
       />
@@ -252,11 +252,11 @@ export function ProfileView() {
         />
         <EmptyState
           icon={<HomeIcon size={26} />}
-          title="Tu cuenta no tiene perfil de estudiante"
-          description="El perfil de preferencias de vivienda solo está disponible para cuentas de estudiante. Con tu cuenta puedes seguir explorando las propiedades publicadas."
+          title="Your account does not have a student profile"
+          description="The housing preferences profile is only available for student accounts. With your account you can keep exploring the published properties."
           action={
             <ButtonLink href="/properties" variant="accent" size="sm">
-              Explorar propiedades
+              Explore properties
             </ButtonLink>
           }
         />
@@ -273,12 +273,12 @@ export function ProfileView() {
       ) : (
         <EmptyState
           icon={<HomeIcon size={26} />}
-          title="Aún no tienes perfil"
-          description="Cuéntanos qué buscas en una vivienda. Completa el formulario de abajo para crear tu perfil de preferencias."
+          title="You do not have a profile yet"
+          description="Tell us what you are looking for in a place. Fill in the form below to create your preferences profile."
         />
       )}
 
-      <FormSection title={profile ? "Editar preferencias" : "Crea tu perfil"}>
+      <FormSection title={profile ? "Edit preferences" : "Create your profile"}>
         <PreferencesForm profile={profile} onSaved={setSavedProfile} />
       </FormSection>
     </div>

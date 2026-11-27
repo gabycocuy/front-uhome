@@ -30,7 +30,7 @@ export function Navbar({
         <Link
           href={logoHref}
           className={styles.logo}
-          aria-label="UHome, ir al inicio"
+          aria-label="UHome, go to home"
         >
           <Image
             src="/images/uhome-logo.svg"

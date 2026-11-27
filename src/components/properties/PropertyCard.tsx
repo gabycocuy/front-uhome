@@ -74,13 +74,13 @@ export function PropertyCard({ property, rating, favorite }: PropertyCardProps) 
         {rating ? (
           <RatingStars value={rating.average} count={rating.count} size="sm" />
         ) : (
-          <p className={styles.noRating}>Sin reseñas todavía</p>
+          <p className={styles.noRating}>No reviews yet</p>
         )}
 
         <p className={styles.description}>{property.description}</p>
 
         {amenities.length > 0 ? (
-          <ul className={styles.amenities} aria-label="Amenidades">
+          <ul className={styles.amenities} aria-label="Amenities">
             {amenities.slice(0, VISIBLE_AMENITIES).map((amenity) => (
               <li key={amenity.id}>
                 <Badge size="sm">{amenity.name}</Badge>

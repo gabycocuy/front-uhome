@@ -36,7 +36,7 @@ export default function Modal({
             type="button"
             onClick={onClose}
             className="rounded-lg px-3 py-1 text-xl text-gray-500 hover:bg-gray-100"
-            aria-label="Cerrar ventana"
+            aria-label="Close window"
           >
             ×
           </button>

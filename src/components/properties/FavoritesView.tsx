@@ -25,10 +25,6 @@ interface FavoritesCatalog {
   ratings: Map<number, PropertyRating> | null;
 }
 
-/**
- * Los favoritos traen la propiedad sin tipo ni amenidades; se completan
- * con GET /properties. Si eso falla, se muestran los datos básicos.
- */
 async function loadCatalog(): Promise<FavoritesCatalog> {
   const [properties, ratings] = await Promise.allSettled([
     getProperties(),
@@ -70,11 +66,11 @@ export function FavoritesView() {
     return (
       <EmptyState
         icon={<HeartIcon size={26} />}
-        title="Favoritos no disponible para tu cuenta"
-        description="Guardar propiedades en favoritos está disponible para cuentas de estudiante."
+        title="Favorites aren't available for your account"
+        description="Saving properties to favorites is available for student accounts."
         action={
           <ButtonLink href="/properties" variant="accent" size="sm">
-            Explorar propiedades
+            Explore properties
           </ButtonLink>
         }
       />
@@ -85,11 +81,11 @@ export function FavoritesView() {
     return (
       <EmptyState
         tone="error"
-        title="No pudimos cargar tus favoritos"
+        title="We couldn't load your favorites"
         description={favorites.error ?? undefined}
         action={
           <Button variant="accent" size="sm" onClick={favorites.reload}>
-            Reintentar
+            Try again
           </Button>
         }
       />
@@ -97,18 +93,18 @@ export function FavoritesView() {
   }
 
   if (favorites.status === "loading" || catalogQuery.status === "loading") {
-    return <Spinner message="Cargando tus favoritos..." />;
+    return <Spinner message="Loading your favorites..." />;
   }
 
   if (savedProperties.length === 0) {
     return (
       <EmptyState
         icon={<HeartIcon size={26} />}
-        title="Todavía no tienes favoritos"
-        description="Toca el corazón en cualquier propiedad del feed para guardarla aquí."
+        title="You don't have favorites yet"
+        description="Tap the heart on any property in the feed to save it here."
         action={
           <ButtonLink href="/properties" variant="accent" size="sm">
-            Explorar propiedades
+            Explore properties
           </ButtonLink>
         }
       />
@@ -123,9 +119,7 @@ export function FavoritesView() {
 
       <p className={styles.count}>
         <strong>{savedProperties.length}</strong>{" "}
-        {savedProperties.length === 1
-          ? "propiedad guardada"
-          : "propiedades guardadas"}
+        {savedProperties.length === 1 ? "saved property" : "saved properties"}
       </p>
 
       <PropertyGrid

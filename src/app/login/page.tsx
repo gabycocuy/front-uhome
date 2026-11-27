@@ -71,7 +71,7 @@ export default function LoginPage() {
       setError(
         err instanceof Error
           ? err.message
-          : "No fue posible iniciar sesión.",
+          : "We could not log you in.",
       );
     } finally {
       setLoading(false);
