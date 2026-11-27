@@ -4,22 +4,22 @@ import type {
 } from "@/services/studentProfile";
 
 export const priorityLabels: Record<PriorityLevel, string> = {
-  alta: "Alta",
-  media: "Media",
-  baja: "Baja",
+  alta: "High",
+  media: "Medium",
+  baja: "Low",
 };
 
 export const vibeLabels: Record<VibePreference, string> = {
   tranquilo: "Quiet",
-  equilibrado: "Equilibrado",
+  equilibrado: "Balanced",
   social: "Social",
-  estudioso: "Estudioso",
+  estudioso: "Studious",
 };
 
 const roleLabels: Record<string, string> = {
   student: "Student",
-  landlord: "Arrendador",
-  admin: "Administrador",
+  landlord: "Landlord",
+  admin: "Administrator",
 };
 
 export function formatRole(role: string | null): string | null {
@@ -34,7 +34,7 @@ export function capitalize(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-const memberSinceFormatter = new Intl.DateTimeFormat("es-CO", {
+const memberSinceFormatter = new Intl.DateTimeFormat("en-US", {
   month: "long",
   year: "numeric",
 });
@@ -54,7 +54,7 @@ export function formatStayMonths(months: number | null): string {
     return "Not set";
   }
 
-  return `${months} ${months === 1 ? "mes" : "meses"}`;
+  return `${months} ${months === 1 ? "month" : "months"}`;
 }
 
 export function formatCount(
