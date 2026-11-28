@@ -1,11 +1,13 @@
 import { apiRequest, getErrorMessage } from "./api";
 
+export type UserRole = "student" | "landlord" | "admin";
+
 export interface AuthUser {
   id: number | string;
   email: string;
   fullName: string;
   username: string;
-  role?: string;
+  role?: UserRole;
 }
 
 export interface LoginResponse {
