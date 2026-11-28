@@ -1,0 +1,54 @@
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+.addButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 12px;
+  background: #111827;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.addButton:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.addButton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.message,
+.error {
+  margin: 32px 0;
+}
+
+.error {
+  color: #b42318;
+}
+
+.empty {
+  display: grid;
+  gap: 8px;
+  padding: 48px 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.empty h2,
+.empty p {
+  margin: 0;
+}
