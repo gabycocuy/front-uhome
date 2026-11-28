@@ -22,15 +22,12 @@ export interface Property {
   propertyType: PropertyType | null;
   distanceToCampus: number;
   available: boolean;
+  landlordId?: number | null;
   amenities: PropertyAmenity[];
   characteristics?: string[] | null;
   contractConditions?: string | null;
 }
 
-/**
- * Propiedad que puede llegar sin relaciones (por ejemplo, la que viene
- * incluida en un favorito no trae tipo ni amenidades).
- */
 export type PropertySummary = Omit<Property, "propertyType" | "amenities"> &
   Partial<Pick<Property, "propertyType" | "amenities">>;
 
@@ -58,10 +55,6 @@ export interface VibeAnalysis {
   propertyId: number;
 }
 
-/**
- * Filtros que el backend aplica en GET /properties.
- * maxDistance se expresa en metros, igual que distanceToCampus.
- */
 export interface PropertyQuery {
   maxPrice?: number;
   maxDistance?: number;
@@ -100,6 +93,10 @@ export function getProperties(
   return request<Property[]>(`/properties${search ? `?${search}` : ""}`);
 }
 
+export function getMyProperties(): Promise<Property[]> {
+  return request<Property[]>("/properties/my");
+}
+
 export function getPropertyById(
   id: number | string,
 ): Promise<Property> {
@@ -118,10 +115,6 @@ export function getPropertyReviews(
   );
 }
 
-/**
- * Promedio de calificaciones por propiedad a partir de las reseñas reales.
- * Las propiedades sin reseñas no aparecen en el mapa.
- */
 export async function getPropertyRatings(): Promise<
   Map<number, PropertyRating>
 > {
@@ -129,7 +122,10 @@ export async function getPropertyRatings(): Promise<
   const totals = new Map<number, { sum: number; count: number }>();
 
   for (const review of reviews) {
-    const current = totals.get(review.propertyId) ?? { sum: 0, count: 0 };
+    const current = totals.get(review.propertyId) ?? {
+      sum: 0,
+      count: 0,
+    };
 
     totals.set(review.propertyId, {
       sum: current.sum + review.rating,
@@ -140,7 +136,10 @@ export async function getPropertyRatings(): Promise<
   const ratings = new Map<number, PropertyRating>();
 
   totals.forEach(({ sum, count }, propertyId) => {
-    ratings.set(propertyId, { average: sum / count, count });
+    ratings.set(propertyId, {
+      average: sum / count,
+      count,
+    });
   });
 
   return ratings;
@@ -155,7 +154,9 @@ export async function getPropertyVibe(
 ): Promise<VibeAnalysis | null> {
   const analyses = await getVibeAnalyses();
 
-  return analyses.find(
-    (analysis) => analysis.propertyId === Number(propertyId),
-  ) ?? null;
+  return (
+    analyses.find(
+      (analysis) => analysis.propertyId === Number(propertyId),
+    ) ?? null
+  );
 }
