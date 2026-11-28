@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  max-width: 900px;
+}
+
+.error {
+  margin: 0 0 20px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #fef3f2;
+  color: #b42318;
+  font-size: 14px;
+}
