@@ -1,15 +1,21 @@
-import type { ReactNode } from "react";
+"use client";
 
-import { appNavLinks } from "@/content/navigation";
+import { useEffect, type ReactNode } from "react";
+
+import {
+  adminNavLinks,
+  landlordNavLinks,
+  studentNavLinks,
+} from "@/content/navigation";
 import { Navbar } from "@/components/ui/Navbar";
 import { UserMenu } from "@/components/ui/UserMenu";
+import { useSessionStore } from "@/store/sessionStore";
 
 import styles from "./AppShell.module.css";
 
 export interface AppShellProps {
   eyebrow: string;
   title: string;
-  /** Parte del título que se muestra con la tipografía de acento. */
   accent?: string;
   description?: string;
   activeHref?: string;
@@ -24,10 +30,24 @@ export function AppShell({
   activeHref,
   children,
 }: AppShellProps) {
+  const hydrate = useSessionStore((state) => state.hydrate);
+  const user = useSessionStore((state) => state.user);
+
+  useEffect(() => {
+    hydrate();
+  }, [hydrate]);
+
+  const links =
+    user?.role === "landlord"
+      ? landlordNavLinks
+      : user?.role === "admin"
+        ? adminNavLinks
+        : studentNavLinks;
+
   return (
     <div className={styles.shell}>
       <Navbar
-        links={appNavLinks}
+        links={links}
         account={<UserMenu />}
         activeHref={activeHref}
       />
@@ -35,6 +55,7 @@ export function AppShell({
       <main className={styles.main}>
         <header className={styles.header}>
           <p className={styles.eyebrow}>{eyebrow}</p>
+
           <h1 className={styles.title}>
             {title}
             {accent ? (
@@ -44,8 +65,11 @@ export function AppShell({
               </>
             ) : null}
           </h1>
+
           {description ? (
-            <p className={styles.description}>{description}</p>
+            <p className={styles.description}>
+              {description}
+            </p>
           ) : null}
         </header>
 
