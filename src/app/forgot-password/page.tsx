@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "../../components/ui/Button";
@@ -49,10 +50,13 @@ export default function ForgotPasswordPage() {
     <main className={styles.page}>
       <section className={styles.card}>
         <div className={styles.brand}>
-          <img
+          <Image
             src="/images/uhome-logo.svg"
             alt="UHome"
+            width={180}
+            height={70}
             className={styles.logo}
+            priority
           />
 
           <p className={styles.tagline}>

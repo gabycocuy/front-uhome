@@ -1,12 +1,13 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { InputText } from "../../components/ui/InputText";
-import { InputPassword } from "../../components/ui/InputPassword";
 import { Button } from "../../components/ui/Button";
+import { InputPassword } from "../../components/ui/InputPassword";
+import { InputText } from "../../components/ui/InputText";
 import { register } from "../../services/auth";
 
 import styles from "./register.module.css";
@@ -22,7 +23,9 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>,
+  ) {
     event.preventDefault();
 
     setError("");
@@ -58,10 +61,13 @@ export default function RegisterPage() {
     <main className={styles.page}>
       <section className={styles.card}>
         <div className={styles.brand}>
-          <img
+          <Image
             src="/images/uhome-logo.svg"
             alt="UHome"
+            width={180}
+            height={70}
             className={styles.logo}
+            priority
           />
 
           <p className={styles.tagline}>
@@ -71,12 +77,17 @@ export default function RegisterPage() {
 
         <div className={styles.divider} />
 
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit}
+        >
           <InputText
             name="email"
             placeholder="Email Address"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) =>
+              setEmail(event.target.value)
+            }
             autoComplete="email"
             required
           />
@@ -85,7 +96,9 @@ export default function RegisterPage() {
             name="password"
             placeholder="Password"
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={(event) =>
+              setPassword(event.target.value)
+            }
             autoComplete="new-password"
             required
           />
@@ -94,7 +107,9 @@ export default function RegisterPage() {
             name="fullName"
             placeholder="Full name"
             value={fullName}
-            onChange={(event) => setFullName(event.target.value)}
+            onChange={(event) =>
+              setFullName(event.target.value)
+            }
             autoComplete="name"
             required
           />
@@ -103,13 +118,18 @@ export default function RegisterPage() {
             name="username"
             placeholder="User name"
             value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(event) =>
+              setUsername(event.target.value)
+            }
             autoComplete="username"
             required
           />
 
           {error ? (
-            <p className={styles.error} role="alert">
+            <p
+              className={styles.error}
+              role="alert"
+            >
               {error}
             </p>
           ) : null}

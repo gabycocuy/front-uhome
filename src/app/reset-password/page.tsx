@@ -1,10 +1,7 @@
 "use client";
 
-import {
-  FormEvent,
-  useEffect,
-  useState,
-} from "react";
+import { FormEvent, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -17,7 +14,16 @@ import styles from "./reset-password.module.css";
 export default function ResetPasswordPage() {
   const router = useRouter();
 
-  const [token, setToken] = useState("");
+  const [token] = useState(() => {
+    if (typeof window === "undefined") {
+      return "";
+    }
+
+    const params = new URLSearchParams(window.location.search);
+
+    return params.get("token") ?? "";
+  });
+
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] =
     useState("");
@@ -25,14 +31,6 @@ export default function ResetPasswordPage() {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const params = new URLSearchParams(
-      window.location.search,
-    );
-
-    setToken(params.get("token") ?? "");
-  }, []);
 
   async function handleSubmit(
     event: FormEvent<HTMLFormElement>,
@@ -89,10 +87,13 @@ export default function ResetPasswordPage() {
     <main className={styles.page}>
       <section className={styles.card}>
         <div className={styles.brand}>
-          <img
+          <Image
             src="/images/uhome-logo.svg"
             alt="UHome"
+            width={180}
+            height={70}
             className={styles.logo}
+            priority
           />
 
           <p className={styles.tagline}>

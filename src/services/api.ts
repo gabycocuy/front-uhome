@@ -29,7 +29,7 @@ export async function apiRequest(
     clearSession();
 
     if (window.location.pathname !== "/login") {
-      window.location.href = "/login";
+      window.location.replace("/login");
     }
   }
 
@@ -46,7 +46,9 @@ export class ApiError extends Error {
   }
 }
 
-export async function getErrorMessage(response: Response): Promise<string> {
+export async function getErrorMessage(
+  response: Response,
+): Promise<string> {
   try {
     const data = await response.json();
 

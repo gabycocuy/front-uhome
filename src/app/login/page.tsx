@@ -1,16 +1,13 @@
 "use client";
 
-import {
-  FormEvent,
-  useEffect,
-  useState,
-} from "react";
-import { useRouter } from "next/navigation";
+import { FormEvent, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { InputText } from "../../components/ui/InputText";
-import { InputPassword } from "../../components/ui/InputPassword";
 import { Button } from "../../components/ui/Button";
+import { InputPassword } from "../../components/ui/InputPassword";
+import { InputText } from "../../components/ui/InputText";
 
 import { login } from "../../services/auth";
 import {
@@ -24,27 +21,26 @@ import styles from "./login.module.css";
 export default function LoginPage() {
   const router = useRouter();
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(() => {
+    if (typeof window === "undefined") {
+      return "";
+    }
+
+    return getRememberMe() ? getRememberedEmail() : "";
+  });
+
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] =
-    useState(false);
+
+  const [rememberMe, setRememberMe] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return getRememberMe();
+  });
 
   const [error, setError] = useState("");
-  const [loading, setLoading] =
-    useState(false);
-
-  useEffect(() => {
-    const rememberedEmail =
-      getRememberedEmail();
-
-    const remembered =
-      getRememberMe();
-
-    if (remembered) {
-      setEmail(rememberedEmail);
-      setRememberMe(true);
-    }
-  }, []);
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(
     event: FormEvent<HTMLFormElement>,
@@ -82,10 +78,13 @@ export default function LoginPage() {
     <main className={styles.page}>
       <section className={styles.card}>
         <div className={styles.brand}>
-          <img
+          <Image
             src="/images/uhome-logo.svg"
             alt="UHome"
+            width={180}
+            height={70}
             className={styles.logo}
+            priority
           />
 
           <p className={styles.tagline}>
@@ -126,9 +125,7 @@ export default function LoginPage() {
               type="checkbox"
               checked={rememberMe}
               onChange={(event) =>
-                setRememberMe(
-                  event.target.checked,
-                )
+                setRememberMe(event.target.checked)
               }
             />
 
