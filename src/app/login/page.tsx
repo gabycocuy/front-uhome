@@ -62,6 +62,11 @@ export default function LoginPage() {
         rememberMe,
       );
 
+      if (response.user.role === "landlord") {
+        router.push("/my-properties");
+        return;
+      }
+
       router.push("/properties");
     } catch (err) {
       setError(
