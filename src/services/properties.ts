@@ -1,4 +1,4 @@
-import { apiRequest } from "./api";
+import { apiRequest, getErrorMessage } from "./api";
 
 export interface PropertyAmenity {
   id: number;
@@ -65,11 +65,28 @@ export interface PropertyRating {
   count: number;
 }
 
-async function request<T>(path: string): Promise<T> {
-  const response = await apiRequest(path);
+export interface PropertyInput {
+  name: string;
+  description: string;
+  address: string;
+  latitude?: number;
+  longitude?: number;
+  price: number;
+  propertyTypeId: number;
+  distanceToCampus: number;
+  available: boolean;
+  characteristics?: string[];
+  contractConditions?: string;
+}
+
+async function request<T>(
+  path: string,
+  options: RequestInit = {},
+): Promise<T> {
+  const response = await apiRequest(path, options);
 
   if (!response.ok) {
-    throw new Error(`Could not load the information (${response.status}).`);
+    throw new Error(await getErrorMessage(response));
   }
 
   return (await response.json()) as T;
@@ -101,6 +118,39 @@ export function getPropertyById(
   id: number | string,
 ): Promise<Property> {
   return request<Property>(`/properties/${id}`);
+}
+
+export function createProperty(
+  data: PropertyInput,
+): Promise<Property> {
+  return request<Property>("/properties", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+
+export function updateProperty(
+  id: number | string,
+  data: Partial<PropertyInput>,
+): Promise<Property> {
+  return request<Property>(`/properties/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+
+export function deleteProperty(
+  id: number | string,
+): Promise<{ message: string }> {
+  return request<{ message: string }>(`/properties/${id}`, {
+    method: "DELETE",
+  });
 }
 
 export function getPropertyTypes(): Promise<PropertyType[]> {
